@@ -4,7 +4,7 @@ import articleContent from './article-content'
 const ArticlePage = ({ match }) => {
 	const name = match.params.name;
 	const article = articleContent.find(article => article.name === name );
-	
+
 	if ( !article ) return <h1>Article {name} doesn't exist</h1>
 	const articleTitle = article.title;
 
@@ -16,7 +16,6 @@ const ArticlePage = ({ match }) => {
 				<p key={key}>{paragraph}</p>
 			))
 		}
-	
 		</React.Fragment>
 		);
 	}
