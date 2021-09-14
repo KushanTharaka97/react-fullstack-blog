@@ -1,11 +1,15 @@
 import React from  'react';
 import articleContent from './article-content'
+import ArticleList from '../components/ArticlesList';
+import NotFoundPage from '../pages/NotFoundPage';
 
 const ArticlePage = ({ match }) => {
 	const name = match.params.name;
 	const article = articleContent.find(article => article.name === name );
 
-	if ( !article ) return <h1>Article {name} doesn't exist</h1>
+
+const otherArticles = articleContent.filter( article => article.name != {name})
+	if ( !article ) return <NotFoundPage />
 	const articleTitle = article.title;
 
 	return(
@@ -16,6 +20,8 @@ const ArticlePage = ({ match }) => {
 				<p key={key}>{paragraph}</p>
 			))
 		}
+		<h3> Othere Articles</h3>
+		<ArticleList articles={otherArticles} />
 		</React.Fragment>
 		);
 	}
